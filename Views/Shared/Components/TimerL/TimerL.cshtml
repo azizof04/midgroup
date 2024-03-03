@@ -1,0 +1,296 @@
+
+<head>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .none {
+            display: none;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+        }
+
+        .container2 {
+            width: 70%;
+            margin: auto;
+        }
+
+        .d-flex {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .img-fluid {
+            width: 100%;
+            height: 100%;
+        }
+
+        .p-box {
+            padding: 15px;
+        }
+ 
+
+
+
+    .date-box {
+  width: 230px;
+  height: 350px;
+  position: relative;
+  border: 2px solid black;
+  align-items: baseline;
+  justify-content: space-around;
+  padding: 10px;
+}
+.date-box .times {
+  top: 290px;
+  left: -20px;
+  position: absolute;
+}
+.date-box .times h5 {
+  padding-left: 40px;
+}
+.date-box .times .il {
+  padding-left: 58px;
+}
+.date-box .text {
+  width: 200px;
+  height: auto;
+  text-align: center;
+}
+.date-box .text h2 {
+  color: black;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.date-box .buttons {
+  width: 145px;
+  height: 180px;
+  margin-top: 10px;
+}
+.date-box .buttons #resetButton {
+  cursor: pointer;
+}
+.date-box .buttons input {
+  display: none;
+}
+.date-box .buttons button {
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  margin: 3px;
+  color: black;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.date-box .buttons button:hover {
+  background-color: rgb(21, 123, 182);
+  border: rgb(21, 123, 182);
+}
+.date-box .date {
+  width: 200px;
+  height: 20px;
+  position: relative;
+  top: 20px;
+  left: 0;
+}
+.date-box .date #Messages {
+  margin-left: 8px;
+  width: 190px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+}
+.date-box .date .boxses {
+  align-items: center;
+}
+.date-box .date .boxses p {
+  font-weight: 500;
+  font-size: 20px;
+}
+.date-box .date .boxses .box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid gray;
+  margin: 1px;
+}
+  
+
+
+       
+    </style>
+</head>
+<body>
+    <div class="date-box d-flex">
+
+        <div class="text">
+            <h2>Bugünkü tarixi asagidaki düymeler vasitesiyla girin:</h2>
+        </div>
+
+        <div class="buttons d-flex">
+            <input type="text" id="input6" value="6">
+            <button onclick="getValue(6)">6</button>
+
+            <input type="text" id="input8" value="8">
+            <button onclick="getValue(8)">8</button>
+
+            <input type="text" id="input3" value="3">
+            <button onclick="getValue(3)">3</button>
+
+            <input type="text" id="input4" value="4">
+            <button onclick="getValue(4)">4</button>
+
+            <input type="text" id="input" value="1">
+            <button onclick="getValue(1)">1</button>
+
+            <input type="text" id="input9" value="9">
+            <button onclick="getValue(9)">9</button>
+
+            <input type="text" id="input5" value="5">
+            <button onclick="getValue(5)">5</button>
+
+            <input type="text" id="input2" value="2">
+            <button onclick="getValue(2)">2</button>
+
+            <input type="text" id="input7" value="7">
+            <button onclick="getValue(7)">7</button>
+
+
+            <button id="const" onclick="resetArray();" style="background-color: red;"><i class="fa-solid fa-xmark"></i></button>
+
+            <input type="text" id="input0" value="0">
+            <button  onclick="getValue(0)">0</button>
+
+            <button id="const" onclick="clearArray(); " style="background-color: yellow;"><i class="fa-solid fa-arrow-left"></i></button>
+        </div>
+
+        <div class="times d-flex">
+            <h5>gün</h5>
+            <h5>ay</h5>
+            <h5 class="il">il</h5>
+            
+        </div>
+
+        <div class="date ">
+            <div id="Messages"></div>
+            <div class="boxses d-flex ">
+                <div class="box"></div>
+                <div class="box"></div>
+                <p>/</p>
+                <div class="box"></div>
+                <div class="box"></div>
+                <p>/</p>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+                <div class="box"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    @* <button onclick="validate()">ble dagdaram</button> *@
+    <script>
+        let valueArray = [];
+        function shuffleButtons() {
+    var buttonsContainer = document.querySelector('.buttons');
+    var buttons = Array.from(buttonsContainer.querySelectorAll('button:not([id="const"])'));
+
+    buttons.sort(() => Math.random() - 0.5);
+
+    buttons.forEach(function(button) {
+      buttonsContainer.appendChild(button);
+    });
+  }
+
+  // Sayfa yüklendiğinde düğmeleri karıştırma fonksiyonunu çağırın
+  window.addEventListener('load', shuffleButtons);
+
+
+        function getValue(num) {
+            if (valueArray.length >= 8 ) {
+                return;
+            }
+            valueArray.push(num);
+            updateMessages();
+        }
+
+        function updateMessages() {
+            document.getElementById("Messages").innerHTML = valueArray.join("ㅤ");
+        }
+
+        function clearArray() {
+
+            var newArr = valueArray.pop();
+
+            var valueArr = valueArray.join("ㅤ");
+
+
+            document.getElementById("Messages").innerHTML = valueArr;
+
+
+        };
+
+
+        function resetArray() {
+
+            document.getElementById("Messages").innerText = " ";
+
+            return valueArray = [];
+
+
+        };
+        
+
+
+      
+
+        function validate() {
+
+           
+
+
+var userDay = valueArray[0].toString() +  valueArray[1].toString();
+let userMonth = valueArray[2].toString() + valueArray[3].toString();
+let userYear = valueArray[4].toString() + valueArray[5].toString() + valueArray[6].toString() + valueArray[7].toString();
+
+// Dizideki değerlerin birleştirilerek oluşturulan tarih
+let userInputDate = parseInt(userYear) * 10000 + parseInt(userMonth) * 100 + parseInt(userDay);
+
+// Şu anki tarihin gün, ay ve yıl değerlerini alarak bir tarih değeri oluşturma
+let naw = new Date();
+let currentDay = naw.getDate();
+let currentMonth = naw.getMonth() + 1; // Ay değeri (1 ila 12 arası)
+let currentYear = naw.getFullYear() ; // Son iki hane
+let currentDate =   currentDay  + currentMonth * 100 + currentYear * 10000;
+
+// Kullanıcı girişi ile şu anki tarihi karşılaştırma
+if (userInputDate === currentDate)
+ {
+   
+
+  return true;
+
+} else {
+    alert("Tarixi düzgün qeyd edin!");
+    window.location.href = '#endregion';
+    return false;
+
+    
+}
+
+
+}
+    </script>
+</body>

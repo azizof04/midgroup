@@ -1,0 +1,14 @@
+@model UserInfoDto
+
+<span>
+    @Model.FirstName @Model.LastName
+    <a style="padding: 3px; color:red; background:black; border:2px solid red; text-decoration:none;" href="/auth/logout">
+        Logout
+    </a>
+<br> <br>
+    @{
+        if(@Model.FirstName == "Admin"){
+                <a style="text-decoration: none; padding:5px; background:yellow; color : black; border: 6px solid black; border-radius: 5px;" href="/dashboard">Admine Kecid</a>
+        }
+    }
+</span>

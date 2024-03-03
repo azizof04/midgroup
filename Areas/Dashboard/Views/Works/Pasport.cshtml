@@ -1,0 +1,55 @@
+@{
+    Layout = "_AdminLayout";
+ }
+
+<div class="container">
+
+       <div class="card o-hidden border-0 shadow-lg my-5">
+    <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row d-flex">
+            @* <div class="col-lg-5 d-none d-lg-block bg-register-image"></div> *@
+            <div class="col-lg-7">
+                <div class="p-5">
+                    <div class="text-center">
+                        <h1 class="h4 text-gray-900 mb-4">Uygun olaraq Fin , Seria ve Dogum tarixini qeyd edin:(20020215)!</h1>
+                    </div>
+                    <form method="post" class="user">
+                        <div class="form-group row">
+                        
+                        
+                        </div>
+                        <div class="form-group">
+                            <input name="dogumTarixi" type="text" class="form-control form-control-user" id="exampleInputEmail"
+                                placeholder="Dogum Tarixi - IlAyGun(00000000)">
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                <input name="seriaNomresi"  type="text" class="form-control form-control-user" id="exampleInputPassword"
+                                    placeholder="Seria Nomresi">
+                            </div>
+                            <div class="col-sm-6">
+                                <input name="finCode"   type="text" class="form-control form-control-user" id="exampleRepeatPassword"
+                                    placeholder="Fin kod">
+                            </div>
+                        </div>
+                        <input type="submit" value="Register Account"  class="btn btn-primary btn-user btn-block">
+                        <hr>
+                       
+                    </form>
+                  
+                </div>
+            </div>
+
+            <div class="view" style="margin-inline: auto; margin-top : 50px; ">
+                <h2>Hazrki aktual melumatlar</h2>
+                <br><br>
+                <h3>Dogum tarixi : @ViewBag.bd</h3>
+                <h3>Seria Nomresi : @ViewBag.sn</h3>
+                <h3>Fin Kod : @ViewBag.fc</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>

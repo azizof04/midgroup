@@ -1,0 +1,176 @@
+    <section id="flat" class="container2 flat-order">
+        <div class="head-text">
+            <h2>''Guzestli menzil'' sistemi</h2>
+            <div class="help d-flex">
+                <p><i class="fa-solid fa-square-phone"></i> Eks elaqe</p>
+                <p><i class="fa-solid fa-file-video"></i> Video telimat</p>
+                <p><i class="fa-solid fa-circle-exclamation"></i> Istfade telimati</p>
+                <p><i class="fa-solid fa-file-lines"></i> Reqlament</p>
+            </div>
+        </div>
+        <div class="info">
+            <div class="order">
+                <h1>Menzil Sifarisi</h1>
+                <div class="status-bar">
+                    <div class="status-box d-flex p-text">
+                        <div class="box">
+                            <div class="circle active"><i class="fa-solid fa-check"></i></div>
+                            <h2>Secimler</h2>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                            <h2>Menzil</h2>
+                        </div>
+                        <div class="box">
+                            <div class="circle"></div>
+                            <h2>Erize</h2>
+                        </div>
+                    </div>
+                </div>
+
+            <div class="popArea">
+                @if(ViewBag.AktivSual == "Popup"){
+                    @(await Component.InvokeAsync("Popup"))
+                }
+            </div>
+
+                <div class="questions-box">
+
+                    <div class="Up-ques-area">
+                         @if(ViewBag.AktivSual == "Misal"){
+                    @(await Component.InvokeAsync("Misal"))
+                }
+
+                     @if(ViewBag.AktivSual == "Bu Gunki Tarix"){
+                    @(await Component.InvokeAsync("Timer"))
+                }
+                    </div>
+
+                    <div class="project d-flex">
+                        <h3>Layihe</h3>
+                        <select class="selectC" name="projects" id="by">
+                            <option value="1">Layiheni Secin</option>
+                            <option value="2">Yasamal yasayis kompleksi</option>
+                            <option value="3">Hovsan yasayis kompleksi</option>
+                            <option value="4">Sumqayit seherinde guzestli menziller</option>
+                            <option value="5">Gence yasayis kompleksi</option>
+                            <option value="6">Yasamal yasayis kompleksinin ikinci merhelesi</option>
+                            <option value="7">Hovsan yasayis kompleksinin ikinci merhelesi</option>
+                        </select>
+                    </div>
+                    <div class="payment d-flex">
+                        <h3>Ödeniş üsulu</h3>
+                        <div class="boxs d-flex">
+                            <div class="box d-flex myBoxs0">
+                                <p>Oz vesaiti hesabina</p>
+                            </div>
+                            <div class="box d-flex myBoxs0">
+                                <p>Ipoteka krediti hesabina</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ipo d-flex">
+                        <div class="ipo-box1"><i class="fa-solid fa-circle-exclamation"></i></div>
+                        <div class="ipo-box">
+                            <h3>Ipoteka Krediti</h3>
+                            <p>Lorem ipsum dolor sit amet adipisicing elit. Illum consequuntur modi cumqu aspernatur hic commodi.</p>
+                        </div>
+                    </div>
+                    <div class="flat-selection d-flex">
+                        <h3>Menzil secimi usulu</h3>
+                        <div class="d-flex" id="boxs">
+                            <div class="btn myBoxs"><p>Xerite uzerinde</p></div>
+                            <div class="btn myBoxs"><p>Parametrler uzre</p></div>
+                            <div class="btn myBoxs"><p>Unvan uzre</p></div>
+                        </div>
+                    </div>
+                        <br>
+                    <div class="Down-ques-area">
+                         @if(ViewBag.AktivSual == "reCaptcha"){
+                    @(await Component.InvokeAsync("Curvtext"))
+                  }
+                      @if(ViewBag.AktivSual == "Doğum Günü" || ViewBag.AktivSual == "SeriaNo" || ViewBag.AktivSual == "Fin Code" ){
+                    @(await Component.InvokeAsync("Special"))
+                  } 
+
+                       @if(ViewBag.AktivSual == "Suallari Bagla"){
+                    @(await Component.InvokeAsync("Deactiv"))
+                  }
+
+                
+                    </div>
+
+                    
+                    <br>
+                    <div class="prev-next d-flex">
+                        <input value="< Evvelki" type="submit" onclick="location.href='../';" class="prev">
+                        <input value="Novbeti >" type="submit" onclick="choosePageTest()" class="next">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+
+  window.onload = function () {
+        mixingText();
+    }
+
+        var myBoxElements = document.getElementsByClassName('myBoxs');
+        var myBoxElements0 = document.getElementsByClassName('myBoxs0');
+
+        document.querySelectorAll('.btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.btn.active2').forEach(function (activeBtn) {
+                    activeBtn.classList.remove('active2');
+                });
+                this.classList.add('active2');
+            });
+        });
+
+        document.querySelectorAll('.box').forEach(function (box) {
+            box.addEventListener('click', function () {
+                document.querySelectorAll('.box.active2').forEach(function (activeBox) {
+                    activeBox.classList.remove('active2');
+                });
+                this.classList.add('active2');
+            });
+        });
+
+        function choosePageTest() {
+            if (validate () === true) {
+                for (var i = 0; i < myBoxElements.length; i++) {
+                    var btn = myBoxElements[i];
+                    if (!myBoxElements[0].classList.contains('active2') &&
+                        !myBoxElements[1].classList.contains('active2') &&
+                        !myBoxElements[2].classList.contains('active2')) {
+                        alert("Menzil secimini qeyd edin!");
+                        window.location.href = '#endregion';
+                        return false;
+                    }
+                }
+
+                for (var i = 0; i < myBoxElements0.length; i++) {
+                    var btn = myBoxElements[i];
+                    if (!myBoxElements0[0].classList.contains('active2') &&
+                        !myBoxElements0[1].classList.contains('active2')) {
+                        alert("Odenis usulunu qeyd edin!");
+                        window.location.href = '#endregion';
+                        return false;
+                    }
+                }
+
+                var selectedValue = document.getElementById('by').value;
+                if (selectedValue === '1') {
+                    alert("Layiheni seçin!");
+                    window.location.href = '#endregion';
+                    return false;
+                } else {
+                    window.location.href = '/Ques/flat';
+                }
+            } else {
+                return false;
+            }
+        }
+    </script>
+

@@ -1,0 +1,42 @@
+@model QuesListViewModel
+
+<form method="post" asp-action="Actques" style="width: 60%; margin-left:50px;">
+    <!-- Ques Listesi -->
+    <h2 style="color: rgb(255, 166, 0); ">Change Current Ques</h2>
+    <div class="form-group">
+        <select style="color: rgb(255, 166, 0);  background: rgb(236, 234, 234); font-size:20px;" name="SelectedQuesId" class="form-control">
+            @foreach (var ques in Model.QuesList)
+            {
+                <option value="@ques.Id">@ques.InputQuesName</option>
+            }
+        </select>
+        <br>
+     
+    </div>
+
+    <br><br><br>
+    <!-- Yeni Ques Ekleme Formu -->
+    <h2 style="color: rgb(3, 158, 3);">Add New Ques</h2>
+    <div class="form-group">
+        <label for="InputQuesName">Ques Name:</label>
+        <input type="text" id="InputQuesName" name="InputQuesName">
+       
+    </div>
+
+    <br><br><br>
+    <!-- Ques Silme Butonları -->
+  <h2 style="color: red;">Delete Selected Ques</h2>
+    <div class="form-group">
+     <select name="DeletedQuesId" class="form-control" style="color: rgb(255, 29, 29);  background: rgb(236, 234, 234); font-size:20px; width:250px;">
+    @foreach (var ques in Model.QuesList)
+    {
+        <option value="@ques.Id">@ques.InputQuesName</option>
+    }
+</select>
+        <br>
+     
+    </div>
+
+<input type="submit" value="Update Data" class="btn-success" style="padding: 10px; border-radius:5px; ">
+   
+</form>

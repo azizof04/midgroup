@@ -1,0 +1,339 @@
+<head>
+    <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+.d-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.date-box {
+  width: 250px; 
+  height: 350px;
+  position: relative;
+  border: 2px solid black;
+  align-items: baseline;
+  justify-content: space-around;
+  padding: 10px;
+}
+.date-box .times {
+  top: 305px;
+  left: 10px;
+  position: absolute;
+}
+.date-box .times h5 {
+  padding-left: 40px;
+}
+.date-box .times .il {
+  padding-left: 58px;
+}
+.date-box .text {
+  width: 140px;
+  height: auto;
+  text-align: center;
+}
+.date-box .text h2 {
+  color: black;
+  font-size: 15px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.date-box .buttons {
+  width: 145px;
+  height: 180px;
+  margin-top: 10px;
+}
+.date-box .buttons #resetButton {
+  cursor: pointer;
+}
+.date-box .buttons input {
+  display: none;
+}
+.date-box .buttons button {
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  margin: 3px;
+  color: black;
+  font-size: 17px;
+  font-weight: 500;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+.date-box .buttons button:hover {
+  background-color: rgb(21, 123, 182);
+  border: rgb(21, 123, 182);
+}
+.date-box .date {
+  width: 200px;
+  height: 20px;
+  position: relative;
+  top: 25px;
+  left: 10px;
+}
+.date-box .date #Messages {
+  margin-left: 8px;
+  width: 190px;
+  height: 20px;
+  position: absolute;
+  top: 0px;
+}
+.date-box .date .boxses {
+  align-items: center;
+}
+.date-box .date .boxses p {
+  font-weight: 500;
+  font-size: 20px;
+}
+.date-box .date .boxses .box {
+  width: 20px;
+  height: 20px;
+  border: 1px solid gray;
+  margin: 1px;
+}
+
+    </style>
+</head>
+<body>
+    <div class="date-box d-flex">
+
+        <div class="text">
+            <h2>Cavablari uygun olaraq  qeyd edin:</h2> 
+    
+        </div>
+        <div class="misal">
+            <!-- Matematik sorularının dinamik olarak oluşturulacağı div -->
+        </div>
+    
+    
+    
+        <div class="buttons d-flex">
+            <input type="text" id="input6" value="6">
+            <button onclick="getValue(6)">6</button>
+
+            <input type="text" id="input8" value="8">
+            <button onclick="getValue(8)">8</button>
+
+            <input type="text" id="input3" value="3">
+            <button onclick="getValue(3)">3</button>
+
+            <input type="text" id="input4" value="4">
+            <button onclick="getValue(4)">4</button>
+
+            <input type="text" id="input" value="1">
+            <button onclick="getValue(1)">1</button>
+
+            <input type="text" id="input9" value="9">
+            <button onclick="getValue(9)">9</button>
+
+            <input type="text" id="input5" value="5">
+            <button onclick="getValue(5)">5</button>
+
+            <input type="text" id="input2" value="2">
+            <button onclick="getValue(2)">2</button>
+
+            <input type="text" id="input7" value="7">
+            <button onclick="getValue(7)">7</button>
+
+
+            <button id="const" onclick="resetArray();" style="background-color: red;"><i class="fa-solid fa-xmark"></i></button>
+
+            <input type="text" id="input0" value="0">
+            <button  onclick="getValue(0)">0</button>
+
+            <button id="const" onclick="clearArray(); " style="background-color: yellow;"><i class="fa-solid fa-arrow-left"></i></button>
+        </div>
+    
+        <div class="times d-flex">
+            <h5>1)</h5>
+            <h5>2)</h5>
+            <h5 class="i">3)</h5>
+        </div>
+    
+        <div class="date ">
+    
+            <div id="Messages"></div>
+            <div class="boxses d-flex ">
+    
+    
+    
+    
+    
+                <div class="box"></div>
+                <div class="box"></div>
+                <p>/</p>
+                <div class="box"></div>
+                <div class="box"></div>
+                <p>/</p>
+                <div class="box"></div>
+                <div class="box"></div>
+                
+    
+            </div>
+    
+    
+    
+        </div>
+    
+    
+    
+    </div>
+
+
+
+
+
+    <script>
+
+
+let valueArray = [];
+        function mixingText() {
+    var buttonsContainer = document.querySelector('.buttons');
+    var buttons = Array.from(buttonsContainer.querySelectorAll('button:not([id="const"])'));
+
+    buttons.sort(() => Math.random() - 0.5);
+
+    buttons.forEach(function(button) {
+      buttonsContainer.appendChild(button);
+    });
+  }
+
+  // Sayfa yüklendiğinde düğmeleri karıştırma fonksiyonunu çağırın
+  //window.addEventListener('load', mixingText);
+
+
+        function getValue(num) {
+            if (valueArray.length >= 6 ) {
+                return;
+            }
+            valueArray.push(num);
+            updateMessages();
+        }
+
+        function updateMessages() {
+            document.getElementById("Messages").innerHTML = valueArray.join("ㅤ");
+        }
+
+        function clearArray() {
+
+            var newArr = valueArray.pop();
+
+            var valueArr = valueArray.join("ㅤ");
+
+
+            document.getElementById("Messages").innerHTML = valueArr;
+
+
+        };
+
+
+        function resetArray() {
+
+            document.getElementById("Messages").innerText = " ";
+
+            return valueArray = [];
+
+
+        };
+
+
+
+        
+        function generateRandomNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generateQuestion() {
+    let num1 = generateRandomNumber(10, 89); // İlk sayı, 10 ile 89 arasında rastgele bir sayı olacak (iki haneli)
+    let num2 = generateRandomNumber(10, num1 - 10); // İkinci sayı, 10 ile num1-10 arasında rastgele bir sayı olacak (ikinci sayı, num1'den büyük olmayacak)
+    let operator = Math.random() < 0.5 ? '+' : '-'; // Toplama veya çıkarma işlemi belirleme
+    let question;
+    let result;
+
+    if (operator === '+') {
+        question = `${num1} + ${num2}`;
+        result = num1 + num2;
+    } else {
+        question = `${num1} - ${num2}`;
+        result = num1 - num2;
+    }
+
+    // Result 100'den büyükse, ikinci basamağı artırmak için uygun bir değer seçelim
+    if (result >= 100 || result < 10) {
+      return generateQuestion()
+    }
+
+    return { question, result };
+}
+
+function generateQuestionAndAnswer() {
+    let questions = [];
+    let answers = [];
+
+    for (let i = 0; i < 3; i++) {
+        let { question, result } = generateQuestion();
+        questions.push(question);
+        answers.push(result);
+    }
+
+    return { questions, answers };
+}
+
+function generateQuestions() {
+    let questionsAndAnswers = generateQuestionAndAnswer();
+    return questionsAndAnswers.questions;
+}
+
+function displayQuestions(questions) {
+    let misalDiv = document.querySelector('.misal');
+
+    questions.forEach((question, index) => {
+        let h4 = document.createElement('h4');
+        h4.textContent = `${index + 1}) ${question}`;
+        misalDiv.appendChild(h4);
+    });
+}
+
+// Soruları oluştur
+let { questions, answers } = generateQuestionAndAnswer();
+
+// Konsolda göster
+console.log("Sorular:", questions);
+console.log("Cevaplar:", answers);
+
+
+
+// Ekranda göster
+displayQuestions(questions);
+
+
+
+
+
+function validate(){
+
+  var vta = valueArray.toString();
+var ata = answers.join(",").toString();
+
+var valueTArray = vta.replace(/,/g, '');
+var answersT = ata.replace(/,/g, '');
+
+  if (valueTArray === answersT) {
+  
+   return true  
+  }
+  else{
+    alert("Cavablar yanlisdir!")
+    return false
+  }
+}
+
+
+
+
+    </script>
+</body>

@@ -1,0 +1,110 @@
+﻿<section id="flat" class="container2">
+
+    <div class="head-text">
+
+        <h2>''Guzestli menzil'' sistemi</h2>
+        <div class="help d-flex">
+            <p><i class="fa-solid fa-square-phone"></i> Eks elaqe</p>
+            <p> <i class="fa-solid fa-file-video"></i> Video telimat</p>
+            <p><i class="fa-solid fa-circle-exclamation"></i> Istfade telimati</p>
+            <p><i class="fa-solid fa-file-lines"></i> Reqlament</p>
+        </div>
+    </div>
+
+    <div class="info">
+        <div class="miniheader">
+            <h2>
+                Vetendas
+            </h2>
+        </div>
+
+        <div class="pasapport-box" style="position: relative;">
+            <style>
+                .pasSpan{
+                    font-size: 20px;
+                    font-weight: bold;
+                    color: black;
+                    background: rgb(241,96,87);
+                    position: absolute;
+                    padding-inline: 10px;
+                }
+            </style>
+            <span style="top:65%; left:33%;" class="DateNo pasSpan">@ViewBag.bd</span>
+            <span style="top:23%; left:73%;" class="SeriaNo pasSpan">@ViewBag.sn</span>
+            <span style="top:80%; left:73%;" class="FinNo pasSpan">@ViewBag.fc</span>
+            <img src="~/vendors/photo/sexsiyyet-vesiqesi.png" class="img-fluid" alt="">
+        </div>
+
+        <div class="miniheader">
+            <h2>
+                Elektron Kabinet
+            </h2>
+
+        </div>
+        <div class="text-box">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+        </div>
+
+        <div class="text-box-2">
+            <p> Diqqet! Lorem ipsum dolor sit amet consectetur adipisicing elit. Error nemo fuga ratione ipsum,
+                laborum MUTLEQDIR!</p>
+        </div>
+
+        <div class="miniheader">
+            <h2>
+                Bildirisiler !
+            </h2>
+
+        </div>
+
+
+
+
+        <div class="d-flex boxes">
+            <a id="aLink" href="#">
+
+                <img src="~/vendors/photo/indir.png" alt="">
+                <p>Menzil satışı için geri sayım!</p>
+            </a>
+
+
+            <a href="">
+                <img src="~/vendors/photo/envelope_letter_icon_900x600-01.png" alt="">
+                <p>Bildirisler</p>
+            </a>
+
+            <a href="">
+                <img src="~/vendors/photo/4601f773e41c094849e10288a7aec5e8.png" alt="">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Recusandae, nisi?</p>
+            </a>
+
+            <a href="">
+                <img src="~/vendors/photo/indir (1).png" alt="">
+                <p>Sorgular</p>
+            </a>
+
+            <a href="">
+                <img src="~/vendors/photo/5633846.png" alt="">
+                <p>Ilkin Qerar</p>
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <form hidden method="post" class="boxes d-flex">
+        <input id="submitButton" type="submit" hidden>
+    </form>
+</section>
+
+<script>
+    // <a> etiketine tıklandığında, <input> etiketine tıklanacak
+    document.getElementById("aLink").addEventListener("click", function () {
+        document.getElementById("submitButton").click();
+    });
+</script>

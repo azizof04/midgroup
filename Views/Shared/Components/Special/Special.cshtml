@@ -1,0 +1,127 @@
+<head>
+
+  <style>
+    .d-flex {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .textbox {
+      width: 200px;
+      height: auto;
+    @*border:2pxsolidred;*@
+    }
+
+    .example {
+      width: 300px;
+      height: auto;
+    @*border:2pxsolidred;*@
+    }
+
+    .textbox h3 {
+      text-align: center;
+      display: flex;
+    @*border:2pxsolidred;*@
+    }
+
+    .textbox h4 {
+      text-align: center;
+      display: flex;
+    @*border:2pxsolidred;*@
+    }
+
+    #captchaContainer {
+      width: 600px;
+      margin-top: 30px;
+      height: 30vh;
+    @*border:2pxsolidred;*@padding: 2px;
+      border-radius: 10px;
+    @*margin-bottom:50px;*@position: relative;
+    }
+
+    #myDateInput {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      margin-top: 30px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 20px;
+
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      border: none;
+      color: #fff;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div id="captchaContainer" class="d-flex">
+
+    <div class="textbox">
+      <h3>@ViewBag.sualBasliqi</h3>
+      <h4>Qeyd Edin</h4>
+    </div>
+
+
+   
+    <div class="captchaText" id="dateText" hidden>@ViewBag.sualCavabi</div>
+    <div class="example">
+
+
+
+      <input autocomplete="off" @if (ViewBag.sualBasliqi == "Dogum Tarixinizi")
+      {
+        <text> type="date" </text>
+      }
+      else
+      {
+        <text> type="text" </text>
+      }
+      id="myDateInput"
+      name="Input"
+      >
+
+
+      @* <button type="submit" onclick="return validateCaptcha()">Submit</button> *@
+    </div>
+  </div>
+
+  <script>
+
+    var dateInput = document.getElementById("myDateInput");
+
+    // Maksimum uzunluğu belirleme
+    dateInput.addEventListener("input", function () {
+      if (this.value.length > 11) {
+        this.value = this.value.slice(0, 10); // İlk 6 karakteri alır
+      }
+    })
+
+    function validate() {
+      var userInput = document.getElementById('myDateInput').value.replace(/-/g, '').split('').sort().join('');
+      var captchaText = document.getElementById('dateText').textContent.split('').sort().join('');
+      if (userInput === captchaText) {
+        return true;
+      } else {
+        alert('Cavabi duzgun qeyd edin!');
+        return false;
+      }
+    }
+  </script>
+</body>

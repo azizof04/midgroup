@@ -1,0 +1,144 @@
+
+<head>
+<style>
+ 
+  .d-flex{
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center ;
+  }
+
+  .textbox{
+    width: 200px;
+    height: auto;
+  }
+  .example{
+    width: 300px;
+    height: auto;
+  }
+
+  .textbox h3 {
+    text-align: center;
+    display: flex;
+  }
+  .textbox h4 {
+    text-align: center;
+    display: flex;
+  }
+
+  #captchaContainer {
+    width: 600px;
+    height: 30vh;
+    
+   
+    /* background-color: #fff; */
+    padding: 10px;
+    border-radius: 10px;
+  margin-bottom: 50px;
+    position: relative;
+  }
+
+   #captchaInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .captchaText {
+    position: absolute;
+    top: 80%;
+    left: 40%;
+    font-size: 32px;
+    font-weight: bold;
+    color: #8d8b8b;
+    transform: rotate(-6deg);
+    background: rgb(17,9,156);
+background: linear-gradient(90deg, rgba(17,9,156,1) 2%, rgba(93,9,121,1) 49%, rgba(0,212,255,1) 100%);
+    padding: 25px;
+    font-size: 36px;
+    border-radius: 5px;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+</head>
+<body>
+
+<div id="captchaContainer" class="d-flex">
+  
+    <div class="textbox"> <h3>CAPTCHA</h3>
+        <h4>Example</h4>
+    </div>
+    <div class="captchaText" id="captchaText"></div>
+    <div class="example">
+
+        <input type="text" id="captchaInput" name="captchaInput" placeholder="Şəkildə gördüyünüz mətni daxil edin">
+        
+        <!-- <button type="submit" onclick="return validateCaptcha()">Submit</button> -->
+      </div>
+    </div>
+   
+  
+
+<script>
+function generateCaptchaText(length) {
+  var charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  var captchaText = "";
+  for (var i = 0; i < length; i++) {
+    var randomIndex = Math.floor(Math.random() * charset.length);
+    captchaText += charset[randomIndex];
+  }
+  return captchaText;
+}
+
+function setRandomFont() {
+  var fonts = ["Arial", "Verdana", "Tahoma", "Courier New", "Georgia"];
+  var randomIndex = Math.floor(Math.random() * fonts.length);
+  return fonts[randomIndex];
+}
+
+function mixingText() {
+  var captchaText = generateCaptchaText(6);
+  var captchaElement = document.getElementById('captchaText');
+  captchaElement.textContent = captchaText;
+  captchaElement.style.fontFamily = setRandomFont();
+};
+
+function validate() {
+  var userInput = document.getElementById('captchaInput').value;
+  var captchaText = document.getElementById('captchaText').textContent;
+  if (userInput === captchaText) {
+   
+    return true;
+  } else {
+    alert('CAPTCHA yalnisdir!');
+    return false;
+  }
+}
+
+// Kopyalama/Yapıştırma engelleme
+document.addEventListener('copy', function(event) {
+  event.preventDefault();
+  return false;
+});
+
+document.addEventListener('paste', function(event) {
+  event.preventDefault();
+  return false;
+});
+</script>
+</body>

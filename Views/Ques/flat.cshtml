@@ -1,0 +1,341 @@
+
+<div class="melumat-box" hidden>
+<h1 hidden id="binaContent">@ViewBag.numberB</h1>
+<h1 hidden id="girisContent">@ViewBag.numberG</h1>
+<h1 hidden id="mertebeContent">@ViewBag.numberMr</h1>
+<h1 hidden id="menzilContent">@ViewBag.numberMn</h1>
+<h1 hidden id="noSual">@ViewBag.AktivSual</h1>
+</div>
+
+<section id="flat" class="container2 flat-order">
+
+
+
+    <div class="head-text">
+
+        <h2>''Guzestli menzil'' sistemi</h2>
+        <div class="help d-flex">
+            <p><i class="fa-solid fa-square-phone"></i> Eks elaqe</p>
+            <p> <i class="fa-solid fa-file-video"></i> Video telimat</p>
+            <p><i class="fa-solid fa-circle-exclamation"></i> Istfade telimati</p>
+            <p><i class="fa-solid fa-file-lines"></i> Reqlament</p>
+        </div>
+    </div>
+
+    <div class="info">
+
+        <div class="order massive">
+            <h1>Yasayis Kompleksi </h1>
+
+            <div class="status-bar">
+                <div class="status-box d-flex p-text">
+                    <div class="box">
+
+
+                        <div class="circle active"><i class="fa-solid fa-check"></i></div>
+                        <h2>Secimler</h2>
+
+                    </div>
+                    <div class="box">
+
+                        <div class="circle active"><i class="fa-solid fa-check"></i></div>
+                        <h2>Menzil</h2>
+
+                    </div>
+                    <div class="box">
+
+                        <div class="circle"></div>
+                        <h2>Erize</h2>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="questions-box ">
+
+                <div class="d-flex">
+<div class="Up-ques-area">
+                         @if(ViewBag.AktivSual == "Misal"){
+                    @(await Component.InvokeAsync("MisalL"))
+                }
+
+                     @if(ViewBag.AktivSual == "Bu Gunki Tarix"){
+                    @(await Component.InvokeAsync("TimerL"))
+                }
+                    </div>
+
+                    <div class="flat-list">
+                        <div class="bar-box d-flex ">
+                            <div class="boxm">
+                                <p>Giris</p>
+                            </div>
+                            <div class="boxm">
+                                <p>Mertebe</p>
+                            </div>
+                            <div class="boxm">
+                                <p>Otaq sayi</p>
+                            </div>
+                            <div class="box">
+                                <p>Sahe, m2</p>
+                            </div>
+                            <div class="box">
+                                <p>Qiymet, AZN</p>
+                            </div>
+                            <div class="box">
+                                <p>Status</p>
+                            </div>
+                        </div>
+                        <div class="ozudu none">
+                            <div class="bar-box-active d-flex ">
+                                <div class="boxm">
+                                    <p id="selectedValue2"></p>
+                                </div>
+                                <div class="boxm">
+                                    <p id="selectedValue3"></p>
+                                </div>
+                                <div class="boxm">
+                                    <p id="selectedValue4"></p>
+                                </div>
+                                <div class="box">
+                                    <p id="selectedValue5"></p>
+                                </div>
+                                <div class="box">
+                                    <p id="selectedValue6"></p>
+                                </div>
+                                <div class="box">
+                                    <p id="selectedValue7"></p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="flat-type d-flex">
+
+                    <h3>Bina nomresi</h3>
+                    <select class="selectF" id="numberOptions1" name="numberOptions1">
+                        <option value="non"></option>
+
+                    </select>
+                    <br>
+                    <h3>Giris nomresi</h3>
+                    <select class="selectF" id="numberOptions2" name="numberOptions2">
+                        <option value="non"></option>
+
+
+                    </select>
+
+                    <br>
+                    <h3>Mertebe nomresi</h3>
+                    <select class="selectF" id="numberOptions3" name="numberOptions3">
+                        <option value="non"></option>
+
+                    </select>
+                    <br>
+                    <h3>Menzil nomresi</h3>
+                    <select class="selectF" id="numberOptions4" name="numberOptions4">
+                        <option value="non"></option>
+
+
+                    </select>
+                      <div class="Down-ques-area">
+                         @if(ViewBag.AktivSual == "Popup"){
+                      @(await Component.InvokeAsync("Popup"))
+                }
+                    </div>
+                 
+                    <br><br>
+
+                      <div class="Down-ques-area" style="margin-left: 400px;">
+                         @if(ViewBag.AktivSual == "reCaptcha"){
+                    @(await Component.InvokeAsync("Curvtext"))
+                }
+                           @if(ViewBag.AktivSual == "Doğum Günü" || ViewBag.AktivSual == "SeriaNo" || ViewBag.AktivSual == "Fin Code" ){
+                    @(await Component.InvokeAsync("Special"))
+                  } 
+                     @if(ViewBag.AktivSual == "Suallari Bagla"){
+                    @(await Component.InvokeAsync("Deactiv"))
+                  }
+
+                    </div>
+                      <br><br><br>
+
+                    <div class="search">
+                        <button class="find" id="displayButton"><i class="fa-solid fa-magnifying-glass"></i>
+                            Axtar</button>
+                        <a href="" class="reload"> Yenile</a>
+
+                        <div class="prev-next d-flex">
+                            <input value="< Evvelki" type="submit" onclick="location.href='choose.html';"
+                                class="prev"></input>
+                                <form  method="post">
+                                     <input value="Novbeti >" type="submit" class="next none"></input>
+                                </form>
+                           
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<script>
+ 
+
+
+
+    var selectElement1 = document.getElementById("numberOptions1");
+
+    var selectElement1 = document.getElementById("numberOptions1");
+    var displayElement1 = document.getElementById("selectedValue1");
+
+    var selectElement2 = document.getElementById("numberOptions2");
+    var displayElement2 = document.getElementById("selectedValue2");
+
+    var selectElement3 = document.getElementById("numberOptions3");
+    var displayElement3 = document.getElementById("selectedValue3");
+
+    var selectElement4 = document.getElementById("numberOptions4");
+    var displayElement4 = document.getElementById("selectedValue4");
+
+    var selectElement5 = document.getElementById("numberOptions5");
+    var displayElement5 = document.getElementById("selectedValue5");
+
+    var selectElement6 = document.getElementById("numberOptions6");
+    var displayElement6 = document.getElementById("selectedValue6");
+
+    var selectElement7 = document.getElementById("numberOptions7");
+    var displayElement7 = document.getElementById("selectedValue7");
+
+    var displayButton = document.getElementById("displayButton");
+
+    window.onload = function () {
+        Bina();
+        Giris();
+        Mertebe();
+        Menzil();
+        mixingText();
+    }
+
+    function Bina() {
+        var binaContent = document.getElementById('binaContent').textContent;
+        var binaArray = binaContent.split(',');
+
+        var select = document.getElementById('numberOptions1');
+        for (var i = 0; i < binaArray.length; i++) {
+            var optionText = binaArray[i].trim();
+            if (optionText !== "") {
+                var option = document.createElement('option');
+                option.text = optionText;
+                select.add(option);
+            }
+        }
+    }
+
+    function Giris() {
+        var girisContent = document.getElementById('girisContent').textContent;
+        var girisArray = girisContent.split(',');
+
+        var select = document.getElementById('numberOptions2');
+        for (var i = 0; i < girisArray.length; i++) {
+            var optionText = girisArray[i].trim();
+            if (optionText !== "") {
+                var option = document.createElement('option');
+                option.text = optionText;
+                select.add(option);
+            }
+        }
+    }
+
+    function Mertebe() {
+        var mertebeContent = document.getElementById('mertebeContent').textContent;
+        var mertebeArray = mertebeContent.split(',');
+
+        var select = document.getElementById('numberOptions3');
+        for (var i = 0; i < mertebeArray.length; i++) {
+            var optionText = mertebeArray[i].trim();
+            if (optionText !== "") {
+                var option = document.createElement('option');
+                option.text = optionText;
+                select.add(option);
+            }
+        }
+    }
+
+
+    function Menzil() {
+
+
+        var menzilContent = document.getElementById('menzilContent').textContent;
+        var menzilArray = menzilContent.split(',');
+
+        var select = document.getElementById('numberOptions4');
+        for (var i = 0; i < menzilArray.length; i++) {
+            var optionText = menzilArray[i].trim();
+            if (optionText !== "") {
+                var option = document.createElement('option');
+                option.text = optionText;
+                select.add(option);
+            }
+        }
+    }
+
+
+    // Düğmeye tıklanınca çalışan fonksiyon
+    displayButton.addEventListener("click", function () {
+
+
+if ( validate() === true) {
+
+            var selectedValueBN = document.getElementById('numberOptions1').value;
+            var selectedValueGN = document.getElementById('numberOptions2').value;
+            var selectedValueMerN = document.getElementById('numberOptions3').value;
+            var selectedValueMenN = document.getElementById('numberOptions4').value;
+
+            if (selectedValueBN === 'non' || selectedValueGN === 'non' || selectedValueMerN === 'non' || selectedValueMenN === 'non') {
+
+
+                alert("nomreleri qeyd edin!");
+                window.location.href = '#endregion'
+                return false;
+
+               
+            }
+            else {
+                 displayElement2.textContent = selectElement2.value;
+                displayElement3.textContent = selectElement3.value + "/12";
+                displayElement4.textContent = selectElement4.value;
+                displayElement5.textContent = "xxxxxx";
+                displayElement6.textContent = "xxxxxx";
+                displayElement7.textContent = "Satisdadir";
+
+                document.querySelectorAll('.next').forEach(function (element) {
+                    element.classList.remove('none');
+                });
+
+                document.querySelectorAll('.ozudu').forEach(function (element) {
+                    element.classList.remove('none');
+                });
+
+
+            }
+
+
+
+
+        }
+        else {
+            return false
+        }
+
+
+
+
+
+    });
+
+
+
+</script>
